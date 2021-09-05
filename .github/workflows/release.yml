@@ -25,11 +25,12 @@ jobs:
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
       - name: auto-release-changelog
-        uses: MC-Machinations/auto-release-changelog@v1.0.0
+        uses: MC-Machinations/auto-release-changelog@v1.1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Vanilla Tweaks ${{ steps.vars.outputs.tag }}
           pre-release: ${{ endsWith(steps.vars.outputs.tag, '-dev') }}
+          skip-prereleases: true
           files: |
             VanillaTweaks-Bukkit.jar
             VanillaTweaks-Paper.jar
